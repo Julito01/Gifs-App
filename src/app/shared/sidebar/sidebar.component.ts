@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { GifsService } from 'src/app/gifs/services/gifs.service';
 
 @Component({
@@ -6,10 +6,16 @@ import { GifsService } from 'src/app/gifs/services/gifs.service';
   templateUrl: './sidebar.component.html',
 })
 export class SidebarComponent implements OnInit {
+  @ViewChild('searchWord') searchWord!: ElementRef<HTMLAnchorElement>;
+
   constructor(private gifService: GifsService) {}
 
   get searchs(): string[] {
     return this.gifService.history;
+  }
+
+  searchGif(query: string): void {
+    this.gifService.searchGifs(query);
   }
 
   ngOnInit(): void {}
