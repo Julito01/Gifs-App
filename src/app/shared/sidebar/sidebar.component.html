@@ -3,10 +3,16 @@
   <hr class="text-white" />
   <div class="list-group list-reset">
     <a
-      *ngFor="let search of searchs"
-      herf="#"
+      *ngIf="searchs.length == 0"
+      href="#"
       class="list-group-item list-group-item-action"
-      >{{ search }}</a
+      >No searchs yet...</a
+    >
+    <a
+      *ngFor="let search of searchs"
+      href="#"
+      class="list-group-item list-group-item-action"
+      >{{ search | titlecase }}</a
     >
   </div>
 </div>
